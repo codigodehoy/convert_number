@@ -14,62 +14,43 @@ async fn hello() -> impl Responder {
 
 async fn index(info: web::Json<Info>) -> impl Responder {
     let body = convert_number(info.number);
-    // print!("{} ", aux);
     HttpResponse::Ok().body(format!("{}", body))
 }
 
 fn convert_number(mut number: u128) -> String {
     let mut map = HashMap::new();  
     //  --------- 0 - 19 --------------
-    map.insert(0, String::new());
-    map.insert(1, String::from("uno"));
-    map.insert(2,String::from("dos"));
-    map.insert(3,String::from("tres"));
-    map.insert(4,String::from("cuatro"));
-    map.insert(5,String::from("cinco"));
-    map.insert(6,String::from("seis"));
-    map.insert(7,String::from("siete"));
-    map.insert(8,String::from("ocho"));
-    map.insert(9,String::from("nueve"));
-    map.insert(10,String::from("diez"));
-    map.insert(11,String::from("once"));
-    map.insert(12,String::from("doce"));
-    map.insert(13,String::from("trece"));
-    map.insert(14,String::from("catorce"));
-    map.insert(15,String::from("quince"));
-    map.insert(16,String::from("dieciséis"));
-    map.insert(17,String::from("diecisiete"));
-    map.insert(18,String::from("dieciocho"));
-    map.insert(19,String::from("diecinueve"));
-    //  --------- 20 - 29 --------------  
-    map.insert(20,String::from("veinte"));
-    map.insert(21,String::from("veintiuno"));
-    map.insert(22,String::from("veintidós"));
-    map.insert(23,String::from("veintitrés"));
-    map.insert(24,String::from("veinticuatro"));
-    map.insert(25,String::from("veinticinco"));
-    map.insert(26,String::from("Veintiséis"));
-    map.insert(27,String::from("veintisiete"));
-    map.insert(28,String::from("veintiocho"));
-    map.insert(29,String::from("veintinueve"));
-    // --- 30 - 40 - 50 - 60 - 70 - 80 - 90 
-    map.insert(30,String::from("treinta y"));
-    map.insert(40,String::from("cuarenta y"));
-    map.insert(50,String::from("cicuenta y"));
-    map.insert(60,String::from("sesenta y"));
-    map.insert(70,String::from("setenta y"));
-    map.insert(80,String::from("ochenta y"));
-    map.insert(90,String::from("noventa y"));
+    map.insert(0, "".to_string()); 
+    map.insert(1, "uno ".to_string()); 
+    map.insert(2, "dos ".to_string());
+    map.insert(3, "tres ".to_string());  
+    map.insert(4, "cuatro ".to_string()); 
+    map.insert(5, "cinco ".to_string()); 
+    map.insert(6, "seis ".to_string());
+    map.insert(7, "siete ".to_string());
+    map.insert(8, "ocho ".to_string()); 
+    map.insert(9, "nueve ".to_string()); 
+    map.insert(10,"diez ".to_string());
+  
+    //  --------- 20 - 90 --------------  
+    map.insert(20,"veinte".to_string());
+    map.insert(30, "treinta y ".to_string()); 
+    map.insert(40, "cuarenta y ".to_string()); 
+    map.insert(50, "cicuenta y ".to_string()); 
+    map.insert(60, "sesenta y ".to_string()); 
+    map.insert(70, "setenta y ".to_string()); 
+    map.insert(80, "ochenta y ".to_string()); 
+    map.insert(90, "noventa y ".to_string());   
     // 100 - 200 -300 - 400 - 500 - 600 - 700 - 800 - 900
-    map.insert(100,String::from("cien"));
-    map.insert(200,String::from("doscientos"));
-    map.insert(300,String::from("trecientos"));
-    map.insert(400,String::from("cuatrocientos"));
-    map.insert(500,String::from("quinientos"));
-    map.insert(600,String::from("seicientos"));
-    map.insert(700,String::from("setecientos"));
-    map.insert(800,String::from("ochocientos"));
-    map.insert(900,String::from("novecientos"));
+    map.insert(100, "cien ".to_string()); 
+    map.insert(200, "doscientos ".to_string()); 
+    map.insert(300, "trecientos ".to_string()); 
+    map.insert(400, "cuatrocientos ".to_string()); 
+    map.insert(500, "quinientos ".to_string()); 
+    map.insert(600, "seicientos ".to_string()); 
+    map.insert(700, "setecientos ".to_string()); 
+    map.insert(800, "ochocientos ".to_string()); 
+    map.insert(900, "novecientos ".to_string());
 
      // 
     let mut mil = String::new();
@@ -88,7 +69,6 @@ fn convert_number(mut number: u128) -> String {
     
     // let base = 10;
     let base:u128 = 10; 
-    // let mut numero = 408965367951020;
     let  mut aux = String::new();
     while number != 0 {
         let res: u128;
@@ -101,52 +81,52 @@ fn convert_number(mut number: u128) -> String {
 
         // --------MiL - Quintillones -----------
         if j == 4  {
-            mil = String::from("mil");
+            mil = String::from("mil ");
         }else{
             mil = String::new();
         } 
         if j == 7  {
-            millon = String::from("millones");
+            millon = String::from("millones ");
         }else{
             millon = String::new();
         } 
         if j == 10  {
-            mil2 = String::from("mil");
+            mil2 = String::from("mil ");
         }else{
             mil2 = String::new();
         } 
         if j == 13  {
-            billon = String::from("billones");
+            billon = String::from("billones ");
         }else{
             billon = String::new();
         } 
         if j == 16  {
-            mil3 = String::from("mil");
+            mil3 = String::from("mil ");
         }else{
             mil3 = String::new();
         } 
         if j == 19  {
-            trillones = String::from("trillones");
+            trillones = String::from("trillones ");
         }else{
             trillones = String::new();
         } 
         if j == 22  {
-            mil4 = String::from("mil");
+            mil4 = String::from("mil ");
         }else{
             mil4 = String::new();
         } 
         if j == 25  {
-            cuatrillones = String::from("cuatrillones");
+            cuatrillones = String::from("cuatrillones ");
         }else{
             cuatrillones = String::new();
         }
         if j == 28  {
-            mil5 = String::from("mil");
+            mil5 = String::from("mil ");
         }else{
             mil5 = String::new();
         } 
         if j == 31  {
-            quintillones = String::from("quintillones");
+            quintillones = String::from("quintillones ");
         }else{
             quintillones = String::new();
         }
@@ -154,18 +134,13 @@ fn convert_number(mut number: u128) -> String {
         number = number / 10;
         match map.get(&res) {
             Some(valor) => { 
-                aux = valor.to_string()+
-                " "+&quintillones+
-                " "+&mil5+
-                " "+&cuatrillones+
-                " "+&mil4+
-                " "+&trillones+
-                " "+&mil3+
-                " "+&billon+
-                " "+&mil2+
-                " "+&millon+
-                " "+&mil+
-                ""+&aux;
+                aux = valor.to_string()+&quintillones+&mil5
+                +&cuatrillones+&mil4
+                +&trillones+&mil3
+                +&billon+&mil2
+                +&millon
+                +&mil
+                +&aux;
             }
             None => print!("No existe ese valor")
         }  
